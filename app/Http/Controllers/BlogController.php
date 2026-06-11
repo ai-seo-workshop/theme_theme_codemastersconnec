@@ -15,6 +15,50 @@ class BlogController extends Controller
         $seoInfo     = $this->seoInfo(MaterielTask::TYPE_HOME);
         $categoryIds = $this->categories->pluck('id')->toArray();
 
+
+        // 1. 获取SEO信息
+        $seoInfo = $this->seoInfo(MaterielTask::TYPE_HOME);
+
+        $categoryIds = $this->categories->pluck('id')->toArray();
+        $categoryInfo = MaterielTask::byLanguage($this->locale)->where('type', MaterielTask::TYPE_CATEGORY)->get();
+
+        // 热门文章
+        $hotBlogs = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->whereIn('category_id', $categoryIds)
+            ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume', 'category_name', 'published_at', 'language')
+            ->orderBy('volume', 'desc')
+            ->limit(4) // 限制查询总数
+            ->get();
+
+        // 最新文章：取前5
+        $latestBlogs = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->whereIn('category_id', $categoryIds)
+            ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume', 'category_name', 'published_at', 'language')
+            ->orderBy('published_at', 'desc')
+            ->limit(6) // 限制查询总数
+            ->get();
+
+        $blogsFlat = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->whereIn('category_id', $categoryIds)
+            ->whereRaw('(
+                SELECT COUNT(*)
+                FROM google_blogs as b2
+                WHERE b2.category_id = google_blogs.category_id
+                AND b2.published_at >= google_blogs.published_at
+                AND b2.state = 1
+            ) <= ?', [5])
+            ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume', 'category_name', 'published_at', 'language')
+            ->orderBy('category_id', 'asc')
+            ->orderBy('published_at', 'desc')
+            ->get();
+        $blogs = $blogsFlat->groupBy('category_id');
+
         $hotPosts = Blog::active()
             ->byLanguage($this->locale)
             ->whereIn('category_id', $categoryIds)
@@ -30,13 +74,15 @@ class BlogController extends Controller
             ->get();
 
         return view('home', [
-            'crumbs'      => $this->crumbs(null, null),
-            'gtag'        => $this->site->gtag,
-            'seoInfo'     => $seoInfo,
-            'categories'  => $this->categories,
-            'slogan'      => $seoInfo,
-            'hotPosts'    => $hotPosts,
-            'latestPosts' => $latestPosts,
+            'crumbs' => $this->crumbs(null, null),
+            'alternate_tag' => $this->alternate_tag,
+            'gtag' => $this->site->gtag,
+            'seoInfo' => $seoInfo,
+            'categoryInfo' => $categoryInfo,
+            'categories' => $this->categories,
+            'hotBlogs' => $hotBlogs,
+            'latestBlogs' => $latestBlogs,
+            'blogs' => $blogs,
         ]);
     }
 
@@ -55,6 +101,16 @@ class BlogController extends Controller
             return response()->view('404', ['categories' => $this->categories, 'slogan' => $this->seoInfo(MaterielTask::TYPE_HOME)], 404);
         }
         $seoInfo = $this->seoInfo(MaterielTask::TYPE_CATEGORY, $categoryInfo->id);
+
+        $hotBlogs = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->byCategory($categoryInfo->id)
+            ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume',
+                'category_name', 'published_at', 'language', 'author')
+            ->orderBy('volume', 'desc')
+            ->limit(4) // 限制查询总数
+            ->get();
 
         $blogs = Blog::active()
             ->byLanguage($this->locale)
@@ -82,6 +138,7 @@ class BlogController extends Controller
             'categories'   => $this->categories,
             'slogan'       => $this->seoInfo(MaterielTask::TYPE_HOME),
             'blogs'        => $blogs,
+            'hotBlogs' => $hotBlogs,
         ]);
     }
 
@@ -112,14 +169,36 @@ class BlogController extends Controller
             ->limit(5)
             ->get();
 
+        // 获取热门文章（侧边栏）
+        $popularBlogs = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->where('id', '!=', $blog->id)
+            ->orderBy('volume', 'desc')
+            ->limit(4)
+            ->get();
+
+        // 获取相关文章（同分类）
+        $relatedBlogs = Blog::with('category')
+            ->active()
+            ->byLanguage($this->locale)
+            ->byCategory($blog->category_id)
+            ->where('id', '!=', $blog->id)
+            ->orderBy('published_at', 'desc')
+            ->limit(3)
+            ->get();
+
         return view('blog-detail', [
             'crumbs'       => $this->crumbs($blog->category, $blog),
             'gtag'         => $this->site->gtag,
             'blog'         => $blog,
             'categories'   => $this->categories,
             'slogan'       => $this->seoInfo(MaterielTask::TYPE_HOME),
-            'popularPosts' => $popularPosts,
+            'popularBlogs'=>$popularBlogs,
+            'relatedBlogs'=>$relatedBlogs,
         ]);
+
+
     }
 }
 
