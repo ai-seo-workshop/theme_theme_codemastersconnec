@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('DEFAULT_LANGUAGE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('DEFAULT_LANGUAGE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -136,7 +136,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'default_language' => env('DEFAULT_LANGUAGE'),
+    'default_language' => env('DEFAULT_LANGUAGE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
