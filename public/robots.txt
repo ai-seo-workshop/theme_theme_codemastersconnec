@@ -1,3 +1,0 @@
-User-agent: *
-
-Sitemap: https://www.test0002.com/sitemap.xml
