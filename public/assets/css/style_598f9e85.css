@@ -135,6 +135,23 @@ img {
     gap: 12px;
 }
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    display: block;
+    width: auto;
+    height: 34px;
+}
+
 .menu-toggle {
     display: none;
     width: 44px;
@@ -729,6 +746,10 @@ img {
 }
 
 @media (max-width: 768px) {
+    .nav-logo-img {
+        height: 28px;
+    }
+
     .custom-logo {
         height: 44px;
     }

@@ -76,6 +76,12 @@
         <div id="main-navigation-bar" class="af-bottom-header">
             <div class="container-wrapper">
                 <div class="bottom-bar-flex">
+                    <div class="nav-logo">
+                        <a href="{{ $homeUrl }}" class="nav-logo-link" rel="home">
+                            <img src="{{ $logoUrl }}" class="nav-logo-img" alt="{{ config('app.name') }}" loading="lazy" decoding="async">
+                            <span class="sr-only">{{ config('app.name') }}</span>
+                        </a>
+                    </div>
                     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-menu-toggle>
                         <span class="ham"></span>
                         <span class="sr-only">Menu</span>
