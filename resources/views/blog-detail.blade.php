@@ -79,7 +79,7 @@
                                 <div class="entry-header-details af-cat-widget-carousel">
                                     @if(!empty($blog->category_name))
                                         <div class="figure-categories read-categories figure-categories-bg">
-                                            <a href="{{ $blog->category?->url ?? $blog->url }}">{{ $blog->category_name }}</a>
+                                            <a href="{{ optional($blog->category)->url ?? $blog->url }}">{{ $blog->category_name }}</a>
                                         </div>
                                     @endif
                                     @if($hasH1Tag)
