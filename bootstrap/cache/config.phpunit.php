@@ -1,20 +1,20 @@
 <?php return array (
   'app' => 
   array (
-    'domain' => 'localtest005.com',
-    'name' => 'localtest005',
+    'domain' => 'theme_codemastersconnec.com',
+    'name' => 'theme_codemastersconnec',
     'site_id' => NULL,
-    'env' => 'local',
-    'debug' => false,
-    'url' => 'http://localtest005.com',
+    'env' => 'testing',
+    'debug' => true,
+    'url' => 'http://theme_codemastersconnec.com',
     'asset_url' => NULL,
     'timezone' => 'Asia/Shanghai',
-    'locale' => 'en',
-    'fallback_locale' => 'en',
+    'locale' => 'de',
+    'fallback_locale' => 'de',
     'faker_locale' => 'en_US',
-    'key' => 'base64:47ublbvenWMHcr+eX7r5Ut97rREE6817n61MzVpCNaI=',
+    'key' => 'base64:4ojuvZPFkA3OsToZshxsFHBofvJmkyLSCIgobJ6fV9k=',
     'cipher' => 'AES-256-CBC',
-    'default_language' => 'en',
+    'default_language' => 'de',
     'providers' => 
     array (
       0 => 'Illuminate\\Auth\\AuthServiceProvider',
@@ -44,8 +44,7 @@
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
       26 => 'App\\Providers\\ViewServiceProvider',
-      27 => 'App\\Providers\\DynamicThemeServiceProvider',
-      28 => 'Barryvdh\\Debugbar\\ServiceProvider',
+      27 => 'Barryvdh\\Debugbar\\ServiceProvider',
     ),
     'aliases' => 
     array (
@@ -133,12 +132,12 @@
       'pusher' => 
       array (
         'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
         'options' => 
         array (
-          'cluster' => 'mt1',
+          'cluster' => NULL,
           'useTLS' => true,
         ),
       ),
@@ -159,7 +158,7 @@
   ),
   'cache' => 
   array (
-    'default' => 'file',
+    'default' => 'array',
     'stores' => 
     array (
       'apc' => 
@@ -179,7 +178,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/Library/WebServer/Documents/work/php/site_template/storage/framework/cache/data',
+        'path' => '/home/www/theme_theme_codemastersconnec/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -211,14 +210,14 @@
       'dynamodb' => 
       array (
         'driver' => 'dynamodb',
-        'key' => '',
-        'secret' => '',
+        'key' => NULL,
+        'secret' => NULL,
         'region' => 'us-east-1',
         'table' => 'cache',
         'endpoint' => NULL,
       ),
     ),
-    'prefix' => 'localtest005_cache',
+    'prefix' => 'theme_codemastersconnec_cache',
   ),
   'database' => 
   array (
@@ -229,7 +228,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'site_localtest005',
+        'database' => 'theme_theme_codemastersconnec',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -237,9 +236,9 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => '8.218.184.135',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'site_localtest005',
+        'database' => 'theme_theme_codemastersconnec',
         'username' => 'sitebuilder',
         'password' => '1Fpl7ARtcQyY{SWR',
         'unix_socket' => '',
@@ -257,11 +256,11 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => '47.76.24.189',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'google_blog_sites',
-        'username' => 'admin',
-        'password' => 'pBZxq!cdwQfrD8@',
+        'database' => 'forge',
+        'username' => 'forge',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -277,9 +276,9 @@
       array (
         'driver' => 'pgsql',
         'url' => NULL,
-        'host' => '8.218.184.135',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'site_localtest005',
+        'database' => 'theme_theme_codemastersconnec',
         'username' => 'sitebuilder',
         'password' => '1Fpl7ARtcQyY{SWR',
         'charset' => 'utf8',
@@ -292,9 +291,9 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => '8.218.184.135',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'site_localtest005',
+        'database' => 'theme_theme_codemastersconnec',
         'username' => 'sitebuilder',
         'password' => '1Fpl7ARtcQyY{SWR',
         'charset' => 'utf8',
@@ -309,7 +308,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'localtest005_database_',
+        'prefix' => 'theme_codemastersconnec_database_',
       ),
       'default' => 
       array (
@@ -331,7 +330,7 @@
   ),
   'debugbar' => 
   array (
-    'enabled' => NULL,
+    'enabled' => false,
     'except' => 
     array (
       0 => 'telescope*',
@@ -341,7 +340,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => '/Library/WebServer/Documents/work/php/site_template/storage/debugbar',
+      'path' => '/home/www/theme_theme_codemastersconnec/storage/debugbar',
       'connection' => NULL,
       'provider' => '',
       'hostname' => '127.0.0.1',
@@ -444,22 +443,22 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/Library/WebServer/Documents/work/php/site_template/storage/app',
+        'root' => '/home/www/theme_theme_codemastersconnec/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/Library/WebServer/Documents/work/php/site_template/storage/app/public',
-        'url' => 'http://localtest005.com/storage',
+        'root' => '/home/www/theme_theme_codemastersconnec/storage/app/public',
+        'url' => 'http://theme_codemastersconnec.com/storage',
         'visibility' => 'public',
       ),
       's3' => 
       array (
         'driver' => 's3',
-        'key' => '',
-        'secret' => '',
-        'region' => 'us-east-1',
-        'bucket' => '',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => NULL,
+        'bucket' => NULL,
         'url' => NULL,
       ),
     ),
@@ -469,7 +468,7 @@
     'driver' => 'bcrypt',
     'bcrypt' => 
     array (
-      'rounds' => 10,
+      'rounds' => '4',
     ),
     'argon' => 
     array (
@@ -495,13 +494,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/Library/WebServer/Documents/work/php/site_template/storage/logs/laravel.log',
+        'path' => '/home/www/theme_theme_codemastersconnec/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/Library/WebServer/Documents/work/php/site_template/storage/logs/laravel.log',
+        'path' => '/home/www/theme_theme_codemastersconnec/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -548,15 +547,15 @@
   ),
   'mail' => 
   array (
-    'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
+    'driver' => 'array',
+    'host' => 'smtp.mailgun.org',
+    'port' => 587,
     'from' => 
     array (
       'address' => 'hello@example.com',
       'name' => 'Example',
     ),
-    'encryption' => NULL,
+    'encryption' => 'tls',
     'username' => NULL,
     'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
@@ -565,7 +564,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/Library/WebServer/Documents/work/php/site_template/resources/views/vendor/mail',
+        0 => '/home/www/theme_theme_codemastersconnec/resources/views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -597,8 +596,8 @@
       'sqs' => 
       array (
         'driver' => 'sqs',
-        'key' => '',
-        'secret' => '',
+        'key' => NULL,
+        'secret' => NULL,
         'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
         'queue' => 'your-queue-name',
         'region' => 'us-east-1',
@@ -633,18 +632,18 @@
     ),
     'ses' => 
     array (
-      'key' => '',
-      'secret' => '',
+      'key' => NULL,
+      'secret' => NULL,
       'region' => 'us-east-1',
     ),
   ),
   'session' => 
   array (
-    'driver' => 'file',
+    'driver' => 'array',
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/Library/WebServer/Documents/work/php/site_template/storage/framework/sessions',
+    'files' => '/home/www/theme_theme_codemastersconnec/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -653,76 +652,20 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'localtest005_session',
+    'cookie' => 'theme_codemastersconnec_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => false,
     'http_only' => true,
     'same_site' => NULL,
   ),
-  'theme' => 
-  array (
-    'active' => 'techlysupport',
-    'default' => NULL,
-    'fallback' => 'techlysupport',
-    'available' => 
-    array (
-      0 => 'techlysupport',
-      1 => 'babysite',
-      2 => 'babysite-green',
-    ),
-    'configs' => 
-    array (
-      'babysite' => 
-      array (
-        'features' => 
-        array (
-          'carousel_count' => 5,
-          'hot_posts_count' => 4,
-          'latest_posts_count' => 6,
-        ),
-      ),
-      'babysite-green' => 
-      array (
-        'features' => 
-        array (
-          'carousel_count' => 5,
-          'hot_posts_count' => 4,
-        ),
-      ),
-      'watchsite' => 
-      array (
-        'features' => 
-        array (
-          'carousel_count' => 8,
-          'banner_count' => 4,
-          'hot_posts_count' => 4,
-          'latest_posts_count' => 18,
-          'sidebar_popular_count' => 5,
-          'sidebar_recommended_count' => 5,
-          'category_posts_per_page' => 12,
-          'blog_detail_popular_count' => 6,
-        ),
-      ),
-      'techlysupport' => 
-      array (
-        'features' => 
-        array (
-          'hot_posts_count' => 4,
-          'latest_posts_count' => 6,
-          'category_posts_per_page' => 12,
-          'sidebar_popular_count' => 5,
-        ),
-      ),
-    ),
-  ),
   'view' => 
   array (
     'paths' => 
     array (
-      0 => '/Library/WebServer/Documents/work/php/site_template/resources/views',
+      0 => '/home/www/theme_theme_codemastersconnec/resources/views',
     ),
-    'compiled' => '/Library/WebServer/Documents/work/php/site_template/storage/framework/views',
+    'compiled' => '/home/www/theme_theme_codemastersconnec/storage/framework/views',
   ),
   'trustedproxy' => 
   array (

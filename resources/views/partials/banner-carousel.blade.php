@@ -17,7 +17,7 @@
                             @endif
                             <div class="pad read-details color-tp-pad">
                                 <div class="read-categories">
-                                    <a href="{{ $featured->category?->url ?? $featured->url }}">{{ $featured->category_name }}</a>
+                                    <a href="{{ optional($featured->category)->url ?? $featured->url }}">{{ $featured->category_name }}</a>
                                 </div>
                                 <p class="read-title"><a href="{{ $featured->url }}">{{ $featured->title }}</a></p>
                                 @if(!empty($featured->summary))
