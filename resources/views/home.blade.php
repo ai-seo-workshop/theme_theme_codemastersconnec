@@ -47,6 +47,28 @@
                     </section>
                 @endif
 
+                @if(!empty($blogs) && !empty($categories))
+                    @foreach($categories as $category)
+                        @php
+                            $categoryPosts = $blogs->get($category->id, collect())->values();
+                        @endphp
+                        @if($categoryPosts->isNotEmpty())
+                            <section class="homepage-block">
+                                <h2 class="widget-title header-after1 category-color-1">
+                                    <a href="{{ $category->url }}">{{ $category->name }}</a>
+                                </h2>
+                                <div class="full-wid-resp af-widget-body">
+                                    <div class="af-container-row aft-archive-wrapper darknews-customizer clearfix archive-layout-grid two-col-masonry">
+                                        @foreach($categoryPosts as $blog)
+                                            @include('partials.read-single-card', ['blog' => $blog])
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </section>
+                        @endif
+                    @endforeach
+                @endif
+
                 @if(!empty($seoInfo->content))
                     <section class="homepage-copy color-pad">
                         {!! $seoInfo->content !!}
