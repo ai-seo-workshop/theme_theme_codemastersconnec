@@ -1,6 +1,9 @@
 @php
     $blogItem = $blog ?? null;
-    $categoryUrl = $blogItem?->category?->url ?? ($blogItem?->category ? $blogItem->category->url : null);
+    $categoryUrl = null;
+    if ($blogItem && !empty($blogItem->category) && !empty($blogItem->category->url)) {
+        $categoryUrl = $blogItem->category->url;
+    }
 @endphp
 @if($blogItem)
     <article class="af-sec-post latest-posts-grid col-3 float-l pad archive-layout-grid">
