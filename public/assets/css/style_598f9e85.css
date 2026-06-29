@@ -102,6 +102,18 @@ img {
     color: var(--af-title);
 }
 
+.custom-logo-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-logo {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 57px;
+}
+
 .site-description {
     margin: 6px 0 0;
     color: var(--af-text-muted);
@@ -717,6 +729,10 @@ img {
 }
 
 @media (max-width: 768px) {
+    .custom-logo {
+        height: 44px;
+    }
+
     .site-title {
         font-size: 26px;
     }

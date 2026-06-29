@@ -51,6 +51,7 @@
             return mb_convert_case($lower, MB_CASE_TITLE, 'UTF-8');
         })->implode(' ');
     };
+    $logoUrl = config('app.logo_url', 'https://codemastersconnect.com/wp-content/uploads/2022/08/asfgv-01.png');
 @endphp
 <div id="page" class="site af-whole-wrapper">
     <a class="skip-link screen-reader-text" href="#content">{{ \App\Models\MaterielTask::home($locale) }}</a>
@@ -61,7 +62,8 @@
                     <div class="logo">
                         <div class="site-branding">
                             <a href="{{ $homeUrl }}" class="custom-logo-link" rel="home">
-                                <span class="site-title font-family-1">{{ config('app.name') }}</span>
+                                <img src="{{ $logoUrl }}" class="custom-logo" alt="{{ config('app.name') }}" loading="eager" decoding="async">
+                                <span class="sr-only">{{ config('app.name') }}</span>
                             </a>
                             @if(!empty($slogan->slogan ?? null))
                                 <p class="site-description">{{ $slogan->slogan }}</p>
