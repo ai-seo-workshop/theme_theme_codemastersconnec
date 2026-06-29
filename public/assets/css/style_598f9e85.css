@@ -105,6 +105,7 @@ img {
 .custom-logo-link {
     display: inline-flex;
     align-items: center;
+    gap: 12px;
 }
 
 .custom-logo {
@@ -144,12 +145,21 @@ img {
 .nav-logo-link {
     display: inline-flex;
     align-items: center;
+    gap: 10px;
 }
 
 .nav-logo-img {
     display: block;
     width: auto;
     height: 34px;
+}
+
+.nav-logo-text {
+    font-family: 'Roboto', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--af-title);
+    white-space: nowrap;
 }
 
 .menu-toggle {
@@ -756,6 +766,10 @@ img {
 
     .site-title {
         font-size: 26px;
+    }
+
+    .nav-logo-text {
+        display: none;
     }
 
     .hero-feature-card .read-title,

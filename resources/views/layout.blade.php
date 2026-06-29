@@ -51,7 +51,7 @@
             return mb_convert_case($lower, MB_CASE_TITLE, 'UTF-8');
         })->implode(' ');
     };
-    $logoUrl = config('app.logo_url', 'https://codemastersconnect.com/wp-content/uploads/2022/08/asfgv-01.png');
+    $siteName = config('app.name');
 @endphp
 <div id="page" class="site af-whole-wrapper">
     <a class="skip-link screen-reader-text" href="#content">{{ \App\Models\MaterielTask::home($locale) }}</a>
@@ -62,8 +62,8 @@
                     <div class="logo">
                         <div class="site-branding">
                             <a href="{{ $homeUrl }}" class="custom-logo-link" rel="home">
-                                <img src="{{ $logoUrl }}" class="custom-logo" alt="{{ config('app.name') }}" loading="eager" decoding="async">
-                                <span class="sr-only">{{ config('app.name') }}</span>
+                                <img src="{{ $logoUrl }}" class="custom-logo" alt="{{ $siteName }}" loading="eager" decoding="async">
+                                <span class="site-title">{{ $siteName }}</span>
                             </a>
                             @if(!empty($slogan->slogan ?? null))
                                 <p class="site-description">{{ $slogan->slogan }}</p>
@@ -78,8 +78,8 @@
                 <div class="bottom-bar-flex">
                     <div class="nav-logo">
                         <a href="{{ $homeUrl }}" class="nav-logo-link" rel="home">
-                            <img src="{{ $logoUrl }}" class="nav-logo-img" alt="{{ config('app.name') }}" loading="lazy" decoding="async">
-                            <span class="sr-only">{{ config('app.name') }}</span>
+                            <img src="{{ $logoUrl }}" class="nav-logo-img" alt="{{ $siteName }}" loading="lazy" decoding="async">
+                            <span class="nav-logo-text">{{ $siteName }}</span>
                         </a>
                     </div>
                     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-menu-toggle>
