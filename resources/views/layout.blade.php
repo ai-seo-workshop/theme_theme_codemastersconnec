@@ -63,7 +63,6 @@
                         <div class="site-branding">
                             <a href="{{ $homeUrl }}" class="custom-logo-link" rel="home">
                                 <img src="{{ $logoUrl }}" class="custom-logo" alt="{{ $siteName }}" loading="eager" decoding="async">
-                                <span class="site-title">{{ $siteName }}</span>
                             </a>
                             @if(!empty($slogan->slogan ?? null))
                                 <p class="site-description">{{ $slogan->slogan }}</p>
@@ -76,12 +75,6 @@
         <div id="main-navigation-bar" class="af-bottom-header">
             <div class="container-wrapper">
                 <div class="bottom-bar-flex">
-                    <div class="nav-logo">
-                        <a href="{{ $homeUrl }}" class="nav-logo-link" rel="home">
-                            <img src="{{ $logoUrl }}" class="nav-logo-img" alt="{{ $siteName }}" loading="lazy" decoding="async">
-                            <span class="nav-logo-text">{{ $siteName }}</span>
-                        </a>
-                    </div>
                     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-menu-toggle>
                         <span class="ham"></span>
                         <span class="sr-only">Menu</span>

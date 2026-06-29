@@ -93,19 +93,9 @@ img {
     justify-content: space-between;
 }
 
-.site-title {
-    display: inline-block;
-    margin: 0;
-    font-family: 'Roboto', serif;
-    font-size: 34px;
-    letter-spacing: 0.4px;
-    color: var(--af-title);
-}
-
 .custom-logo-link {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
 }
 
 .custom-logo {
@@ -134,32 +124,6 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.nav-logo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.nav-logo-img {
-    display: block;
-    width: auto;
-    height: 34px;
-}
-
-.nav-logo-text {
-    font-family: 'Roboto', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--af-title);
-    white-space: nowrap;
 }
 
 .menu-toggle {
@@ -756,20 +720,8 @@ img {
 }
 
 @media (max-width: 768px) {
-    .nav-logo-img {
-        height: 28px;
-    }
-
     .custom-logo {
         height: 44px;
-    }
-
-    .site-title {
-        font-size: 26px;
-    }
-
-    .nav-logo-text {
-        display: none;
     }
 
     .hero-feature-card .read-title,
