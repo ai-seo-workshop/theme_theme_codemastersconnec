@@ -15,7 +15,8 @@
     faqButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const expanded = button.getAttribute('aria-expanded') === 'true';
-            const answer = button.nextElementSibling;
+            const faqItem = button.closest('.faq-item');
+            const answer = faqItem ? faqItem.querySelector('.faq-answer') : null;
             button.setAttribute('aria-expanded', String(!expanded));
             if (answer) {
                 answer.hidden = expanded;
