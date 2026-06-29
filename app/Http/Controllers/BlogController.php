@@ -29,7 +29,7 @@ class BlogController extends Controller
             ->whereIn('category_id', $categoryIds)
             ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume', 'category_name', 'published_at', 'language')
             ->orderBy('volume', 'desc')
-            ->limit(4) // 限制查询总数
+            ->limit(6) // 限制查询总数
             ->get();
 
         // 最新文章：取前5
@@ -52,7 +52,7 @@ class BlogController extends Controller
                 WHERE b2.category_id = google_blogs.category_id
                 AND b2.published_at >= google_blogs.published_at
                 AND b2.state = 1
-            ) <= ?', [5])
+            ) <= ?', [6])
             ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume', 'category_name', 'published_at', 'language')
             ->orderBy('category_id', 'asc')
             ->orderBy('published_at', 'desc')
@@ -63,7 +63,7 @@ class BlogController extends Controller
             ->byLanguage($this->locale)
             ->whereIn('category_id', $categoryIds)
             ->latest('published_at')
-            ->limit(4)
+            ->limit(6)
             ->get();
 
         $latestPosts = Blog::active()
@@ -85,6 +85,7 @@ class BlogController extends Controller
             'blogs' => $blogs,
         ]);
     }
+
 
     /**
      * 分类列表页
@@ -109,7 +110,7 @@ class BlogController extends Controller
             ->select('id', 'title', 'title_uniq', 'head_img', 'head_img_alt', 'summary', 'category_id', 'volume',
                 'category_name', 'published_at', 'language', 'author')
             ->orderBy('volume', 'desc')
-            ->limit(4) // 限制查询总数
+            ->limit(6) // 限制查询总数
             ->get();
 
         $blogs = Blog::active()
@@ -201,4 +202,3 @@ class BlogController extends Controller
 
     }
 }
-

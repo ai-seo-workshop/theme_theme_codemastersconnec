@@ -36,9 +36,9 @@
 
 @section('content')
     @php
-        $sidebarPosts = ($hotPosts ?? $hotBlogs ?? collect())->take(4);
+        $sidebarPosts = ($hotPosts ?? $hotBlogs ?? collect())->take(6);
         if ($sidebarPosts->isEmpty() && isset($blogs)) {
-            $sidebarPosts = collect($blogs->items())->take(4);
+            $sidebarPosts = collect($blogs->items())->take(6);
         }
     @endphp
     <div id="content" class="container-wrapper">

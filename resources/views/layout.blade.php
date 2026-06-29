@@ -105,7 +105,9 @@
                     <p class="widget-title">{{ \App\Models\MaterielTask::company($locale) }}</p>
                     <ul>
                         @foreach($supports as $item)
-                            <li><a href="{{ $supportUrl($item) }}">{{ $titleCase($item['name']) }}</a></li>
+                            @if(!in_array($item['uri'], ['privacy', 'terms'], true))
+                                <li><a href="{{ $supportUrl($item) }}">{{ $titleCase($item['name']) }}</a></li>
+                            @endif
                         @endforeach
                     </ul>
                 </section>

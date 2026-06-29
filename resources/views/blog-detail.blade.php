@@ -103,7 +103,7 @@
 
                             @if($faqItems->isNotEmpty())
                                 <section class="faq-block">
-                                    <h2>{{ \App\Models\MaterielTask::detail_content(app()->getLocale()) }}</h2>
+                                    <h2>FAQS</h2>
                                     @foreach($faqItems as $item)
                                         <article class="faq-item">
                                             <h3>

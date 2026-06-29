@@ -18,11 +18,7 @@
     @php
         $hotPosts = ($hotPosts ?? $hotBlogs ?? collect())->values();
         $latestPosts = ($latestPosts ?? $latestBlogs ?? collect())->values();
-        $usedIds = $hotPosts->pluck('id')->filter()->all();
-        $latestPosts = $latestPosts->reject(fn($post) => in_array($post->id, $usedIds, true))->values();
     @endphp
-
-    @include('partials.banner-carousel', ['posts' => $hotPosts])
 
     <div id="content" class="container-wrapper">
         <section class="section-block-upper">
@@ -78,7 +74,7 @@
 
             @include('partials.sidebar-widgets', [
                 'title' => \App\Models\MaterielTask::hot_topics(app()->getLocale()),
-                'posts' => $hotPosts->take(4)
+                'posts' => $hotPosts->take(6)
             ])
         </section>
     </div>
